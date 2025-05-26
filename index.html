@@ -1,0 +1,587 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhaLink Pro - Generador Premium de Enlaces WhatsApp</title>
+    <link rel="icon" type="image/png" href="/Logo de WhaLink en verde.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+    <meta name="description" content="WhaLink Pro - Generador Premium de Enlaces WhatsApp con IA y Analytics">
+    <meta name="keywords" content="whatsapp, enlaces, marketing, analytics, ai">
+    <meta name="theme-color" content="#667eea">
+</head>
+<body class="min-h-screen bg-gray-50 page-transition">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50">
+        Saltar al contenido principal
+    </a>
+    <nav id="navbar" class="fixed top-0 w-full z-50 navbar-unique">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="logo-container">
+                    <img src="/Logo moderno de _WhaLink_ (1).png" alt="WhaLink" class="logo-image-xl">
+                </div>
+                <div class="hidden md:flex nav-links-unique text-white">
+                    <a href="#features" class="nav-link-unique">
+                        <i class="fas fa-star"></i>
+                        Características
+                    </a>
+                    <a href="#pricing" class="nav-link-unique">
+                        <i class="fas fa-crown"></i>
+                        Precios
+                    </a>
+                    <a href="#analytics" class="nav-link-unique">
+                        <i class="fas fa-chart-line"></i>
+                        Analytics
+                    </a>
+                </div>
+                <div id="auth-section" class="flex items-center">
+                    <button id="login-btn" class="auth-button">
+                        <i class="fab fa-google mr-2"></i>Iniciar con Google
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="main-content" class="gradient-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <div class="floating-particles" id="particles-container"></div>
+        <div class="morphing-blob" style="top: 20%; right: -150px;"></div>
+        <div class="morphing-blob" style="bottom: 20%; left: -150px; animation-delay: -4s;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white slide-in">
+                <h1 class="hero-title-enhanced text-5xl lg:text-7xl font-bold mb-6" tabindex="0">
+                    La Revolución de los Enlaces WhatsApp
+                </h1>
+                <p class="hero-subtitle text-xl mb-8" tabindex="0">
+                    Crea enlaces inteligentes, analiza el rendimiento en tiempo real y automatiza tus conversaciones con la plataforma más avanzada del mercado.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button id="start-free-btn" class="btn-hero-primary" aria-label="Comenzar gratis con WhaLink Pro">
+                        <span class="btn-text">
+                            <i class="fas fa-rocket mr-2"></i>Comenzar Gratis
+                        </span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button id="demo-btn" class="btn-hero-secondary" aria-label="Ver demostración del producto">
+                        <span class="btn-text">
+                            <i class="fas fa-play mr-2"></i>Ver Demo
+                        </span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="slide-in floating-animation">
+                <div class="whatsapp-preview">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                            W
+                        </div>
+                        <div class="ml-3">
+                            <div class="font-semibold">WhatsApp Business</div>
+                            <div class="text-sm text-gray-500">en línea</div>
+                        </div>
+                    </div>
+                    <div id="preview-messages">
+                        <div class="message-bubble">
+                            ¡Hola! 👋 Te contacto desde WhaLink Pro
+                        </div>
+                        <div class="text-xs text-gray-500 text-right">12:34 ✓✓</div>
+                    </div>
+                    <div class="typing-indicator text-gray-500 text-sm mt-2">
+                        <i class="fas fa-circle text-xs"></i>
+                        <i class="fas fa-circle text-xs"></i>
+                        <i class="fas fa-circle text-xs"></i>
+                        escribiendo...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="feature-section bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="feature-icon">
+                    <i class="fas fa-star text-3xl text-white"></i>
+                </div>
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Características Premium</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Descubre todas las funcionalidades que hacen de WhaLink Pro la mejor opción para tus enlaces de WhatsApp.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-magic text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">IA Avanzada</h3>
+                    <p class="text-gray-600">Optimiza automáticamente tus mensajes con inteligencia artificial para maximizar conversiones.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Analytics en Tiempo Real</h3>
+                    <p class="text-gray-600">Monitorea el rendimiento de tus enlaces con métricas detalladas y reportes avanzados.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-link text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Enlaces Ilimitados</h3>
+                    <p class="text-gray-600">Crea tantos enlaces como necesites sin restricciones ni límites ocultos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="generator" class="feature-section bg-white hidden" role="main" aria-labelledby="generator-title">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="feature-icon ai-glow">
+                    <i class="fas fa-magic text-3xl text-white"></i>
+                </div>
+                <h2 id="generator-title" class="text-5xl font-bold text-gray-900 mb-6">Generador Inteligente de Enlaces</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Crea enlaces personalizados con IA y analytics avanzados. Nuestra tecnología de machine learning optimiza automáticamente tus mensajes para maximizar las conversiones.</p>
+            </div>
+            
+            <div class="enhanced-card" role="form" aria-label="Formulario de generación de enlaces">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="mb-6">
+                            <label for="country-selector-btn" class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-globe mr-2 text-green-500"></i>País y Número de WhatsApp
+                            </label>
+                            <div class="flex">
+                                <div class="country-selector">
+                                    <button id="country-selector-btn" type="button" class="bg-gray-50 border border-gray-300 rounded-l-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-transparent flex items-center min-w-[120px] focus-ring" aria-expanded="false" aria-haspopup="listbox" aria-label="Seleccionar país">
+                                        <span class="country-flag">🇦🇷</span>
+                                        <span class="ml-2">+54</span>
+                                        <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                                    </button>
+                                    <div id="country-dropdown" class="country-dropdown" role="listbox" aria-label="Lista de países">
+                                        <div class="country-search">
+                                            <div class="relative">
+                                                <input 
+                                                    type="text" 
+                                                    id="country-search-input" 
+                                                    placeholder="Buscar país..." 
+                                                    autocomplete="off"
+                                                >
+                                                <i class="fas fa-search search-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="country-list" id="country-list">
+                                            <!-- Countries will be populated here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="tel" id="phone-number" placeholder="1123456789" class="flex-1 border border-gray-300 rounded-r-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-transparent focus-ring" aria-label="Número de teléfono" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message-text" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-comment mr-2 text-blue-500"></i>Mensaje Personalizado
+                            </label>
+                            <textarea id="message-text" rows="4" placeholder="¡Hola! Me interesa conocer más sobre..." class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none focus-ring" aria-label="Mensaje personalizado" required></textarea>
+                            <div class="flex justify-between mt-2">
+                                <button id="ai-optimize-btn" type="button" class="text-sm text-purple-600 hover:text-purple-800 font-medium focus-ring" aria-label="Optimizar mensaje con inteligencia artificial">
+                                    <i class="fas fa-magic mr-1"></i>Optimizar con IA
+                                </button>
+                                <span class="text-sm text-gray-500" aria-live="polite">
+                                    <span id="char-count">0</span>/1000 caracteres
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="campaign-name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-tag mr-2 text-yellow-500"></i>Nombre de Campaña
+                            </label>
+                            <input type="text" id="campaign-name" placeholder="Mi Campaña de Marketing" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-transparent focus-ring" aria-label="Nombre de la campaña">
+                        </div>
+                        
+                        <button id="generate-link-btn" type="button" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 shadow-lg focus-ring" aria-label="Generar enlace premium de WhatsApp">
+                            <i class="fas fa-link mr-2"></i>Generar Enlace Premium
+                        </button>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-4">
+                            <i class="fas fa-eye mr-2"></i>Vista Previa en Tiempo Real
+                        </h3>
+                        <div class="whatsapp-preview">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+                                <div class="ml-3">
+                                    <div class="font-semibold text-sm">Tu Contacto</div>
+                                    <div class="text-xs text-gray-500">hace 2 min</div>
+                                </div>
+                            </div>
+                            <div id="live-preview" class="">
+                                Escribe tu mensaje para ver la vista previa...
+                            </div>
+                        </div>
+                        
+                        <div id="generated-link-section" class="mt-6 p-4 bg-gray-50 rounded-lg hidden">
+                            <h4 class="font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-check-circle mr-2 text-green-500"></i>¡Enlace Generado!
+                            </h4>
+                            <div class="flex items-center gap-2">
+                                <input type="text" id="generated-link" readonly class="flex-1 bg-white border border-gray-300 rounded px-3 py-2 text-sm">
+                                <button id="copy-link-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm transition-colors">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="mt-2 flex gap-2">
+                                <button id="test-link-btn" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Probar
+                                </button>
+                                <button id="qr-code-btn" class="bg-purple-500 hover:bg-purple-600 text-white px-3 py-1 rounded text-xs">
+                                    <i class="fas fa-qrcode mr-1"></i>QR Code
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="user-dashboard" class="feature-section bg-white hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Mis Enlaces</h2>
+                <p class="text-xl text-gray-600">Gestiona todos tus enlaces WhatsApp desde un solo lugar</p>
+            </div>
+            
+            <div id="user-links" class="space-y-4">
+                <!-- User links will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="analytics" class="feature-section bg-gradient-to-br from-purple-50 to-pink-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="feature-icon">
+                    <i class="fas fa-brain text-3xl text-white"></i>
+                </div>
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Analytics Predictivos con IA</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Nuestra inteligencia artificial analiza patrones de comportamiento para predecir los mejores momentos de envío y optimizar automáticamente tus campañas.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Métricas Avanzadas</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Tasa de apertura en tiempo real</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Análisis geográfico detallado</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Predicciones de comportamiento</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="analytics-chart">
+                    <div class="text-white text-center">
+                        <h4 class="text-xl font-bold mb-4">Dashboard en Vivo</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <div class="text-2xl font-bold">1,247</div>
+                                <div class="text-sm">Clicks Hoy</div>
+                            </div>
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <div class="text-2xl font-bold">89%</div>
+                                <div class="text-sm">Tasa Conversión</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="demo-limit-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="professional-modal">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <i class="fas fa-crown modal-icon"></i>
+                        <h3>Límite de Demo Alcanzado</h3>
+                    </div>
+                    <button id="close-demo-modal" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="text-center mb-6">
+                        <p class="text-gray-600 mb-4">Has generado 5 enlaces en modo demo. Para continuar usando WhaLink Pro, actualiza a la versión completa.</p>
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg mb-6">
+                            <h4 class="text-xl font-bold mb-2">¡Únete a WhaLink Pro!</h4>
+                            <p class="mb-4">Enlaces ilimitados, analytics avanzados y mucho más</p>
+                            <div class="text-3xl font-bold">$29/mes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button id="upgrade-btn" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold">
+                            <i class="fas fa-rocket mr-2"></i>Actualizar Ahora
+                        </button>
+                        <button id="close-demo-modal-btn" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold">
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="professional-modal">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <i class="fas fa-cog modal-icon"></i>
+                        <h3>Configuración</h3>
+                    </div>
+                    <button id="close-settings" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <i class="fas fa-moon setting-icon"></i>
+                                <div>
+                                    <span class="setting-label">Modo Oscuro</span>
+                                    <small class="setting-desc">Cambia el tema de la interfaz</small>
+                                </div>
+                            </div>
+                            <label class="modern-toggle">
+                                <input type="checkbox" id="dark-mode-toggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <i class="fas fa-bell setting-icon"></i>
+                                <div>
+                                    <span class="setting-label">Notificaciones</span>
+                                    <small class="setting-desc">Recibe alertas de nuevos enlaces</small>
+                                </div>
+                            </div>
+                            <label class="modern-toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button id="logout-btn" class="logout-button">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <section id="pricing" class="pricing-section feature-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="feature-icon">
+                    <i class="fas fa-crown text-3xl text-white"></i>
+                </div>
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Planes que Escalan Contigo</h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Comienza gratis y escala según tus necesidades. Sin compromisos, sin límites ocultos.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="pricing-card text-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                    <div class="pricing-price">$0</div>
+                    <p class="text-gray-600 mb-6">Perfecto para comenzar</p>
+                    <ul class="space-y-0 mb-8">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>100 enlaces por mes</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Analytics básicos</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Soporte por email</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Templates básicos</span>
+                        </li>
+                    </ul>
+                    <button class="pricing-btn btn-secondary">
+                        Comenzar Gratis
+                    </button>
+                </div>
+                
+                <div class="pricing-card popular text-center">
+                    <div class="pricing-badge">Más Popular</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
+                    <div class="pricing-price">$29</div>
+                    <p class="text-gray-600 mb-6">Para profesionales</p>
+                    <ul class="space-y-0 mb-8">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Enlaces ilimitados</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>IA y Analytics avanzados</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Integraciones premium</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Soporte prioritario</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>API completa</span>
+                        </li>
+                    </ul>
+                    <button class="pricing-btn btn-primary">
+                        Probar Pro
+                    </button>
+                </div>
+                
+                <div class="pricing-card text-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                    <div class="pricing-price text-gray-900">Custom</div>
+                    <p class="text-gray-600 mb-6">Soluciones a medida</p>
+                    <ul class="space-y-0 mb-8">
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Infraestructura dedicada</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>API completa</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Soporte 24/7</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Onboarding personalizado</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>SLA garantizado</span>
+                        </li>
+                    </ul>
+                    <button class="pricing-btn btn-dark">
+                        Contactar Ventas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <i class="fab fa-whatsapp text-green-400"></i>
+                        WhaLink Pro
+                    </div>
+                    <p class="text-gray-400 mb-4">La plataforma más avanzada para generación de enlaces WhatsApp con IA y analytics empresariales.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Producto</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Características</a></li>
+                        <li><a href="#" class="hover:text-white">Precios</a></li>
+                        <li><a href="#" class="hover:text-white">API</a></li>
+                        <li><a href="#" class="hover:text-white">Integraciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Recursos</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Documentación</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Casos de Uso</a></li>
+                        <li><a href="#" class="hover:text-white">Soporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Empresa</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Sobre Nosotros</a></li>
+                        <li><a href="#" class="hover:text-white">Carreras</a></li>
+                        <li><a href="#" class="hover:text-white">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white">Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 WhaLink Pro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnD_XUtSavJYXOYQEE4U17obCfMHzYpME",
+            authDomain: "webbot-89c07.firebaseapp.com",
+            projectId: "webbot-89c07",
+            storageBucket: "webbot-89c07.firebasestorage.app",
+            messagingSenderId: "158520321153",
+            appId: "1:158520321153:web:4cb3d8f06a56e88e175980",
+            measurementId: "G-E86Z8VGTMT"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        if (firebase.analytics) {
+            firebase.analytics();
+        }
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
